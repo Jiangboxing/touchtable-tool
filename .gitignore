@@ -1,0 +1,17 @@
+node_modules/
+*.zip
+.zip
+__pycache__/
+*.py[cod]
+*.dem
+*.log
+*.bak
+.env
+usrconf.py
+usrconf_new.py
+usrconf.py.misc
+touchtable_composed.py
+**/var/
+**/stats/
+**/cache/
+workspace/touchtable/model/data/host/

@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Drag Drop Demo</title>
+    <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+    <style>
+		body {
+		    background-image: url("bg.png");
+			background-repeat: no-repeat;
+			width: 1920px;
+			height: 1080px;
+			margin: 0px;
+			padding: 0px;
+			color: #fff;
+			
+			overflow: hidden;
+			overscroll-behavior-x: none;
+			touch-action: none;
+		}
+	
+		.bg{
+			width: 1920px;
+			height: 1080px;
+			margin: 0px;
+			padding: 0px;
+		}		
+		
+		.house {
+			display: flex;
+		    background-color: #222;
+			opacity: 0.5;
+			width: 570px;
+			height: 250px;
+			padding: 0px;
+		    margin: 0px;
+			  
+			position: absolute;
+			color: #fff;
+		}
+		
+		.draggable {
+		  display: block;
+		  flex-direction: column;
+		  justify-content: center;
+		  box-sizing: border-box;
+		  
+		  width: 60px;
+		  height: 60px;
+		  padding: 0px;
+		  margin: 0px;
+		  
+		  
+		  max-width: 200px;
+		  max-height: 200px;
+		  min-width: 50px;
+		  min-height: 50px;
+		  
+		  position: absolute;
+		  top: 520px;
+
+		  border-radius: 6px;
+
+		  text-align: center;
+		  color: #fff;
+		  background-color: #29e;
+		  border: 2px solid #000;
+
+		  touch-action: none;
+		  user-select: none;
+		}
+		
+		#drag40 {
+		  width: 40px;
+		  height: 40px;
+		  left: 200px;
+		}
+		
+		#drag60 {
+		  width: 60px;
+		  height: 60px;
+		  left: 300px;
+		}
+		
+		#drag80 {
+		  width: 80px;
+		  height: 80px;
+		  left: 400px;
+		}
+		
+		#drag100 {
+		  width: 100px;
+		  height: 100px;
+		  left: 540px;
+		}
+		
+		#drag120 {
+		  width: 120px;
+		  height: 120px;
+		  left: 700px;
+		}
+		
+		.drop-active {
+		  border-color: #aaa;
+		}
+		
+		.can-drop {
+		  color: #000;
+		  background-color: #4e4;
+		}
+		
+		.drop-target {
+		  background-color: #444;
+		  border-color: #888;
+		  border-style: dashed 4px #888;
+		}
+
+		#scale-element.reset {
+			transition: -webkit-transform 0.3s ease-in-out;
+			transition: transform 0.3s ease-in-out;
+		}
+		
+	  </style>
+   
+</head>
+<body>
+	<div class="bg">
+		<div id="house0" class="house" style="left:0px; top: 0px;"></div>
+		<div id="house1" class="house" style="left:675px; top: 0px;"></div>
+		<div id="house2" class="house" style="left:1350px; top: 0px;"></div>
+		<div id="house3" class="house" style="left:0px; top: 830px;"></div>
+		<div id="house4" class="house" style="left:675px; top: 830px;"></div>
+		<div id="house5" class="house" style="left:1350px; top: 830px;"></div>
+	
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+        <div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+		<div id="drag60" class="draggable" data-s=60 ></div>
+        </div>
+	</div>
+
+
+    <script>
+    var angleScale = {
+		angle: 0,
+		scale: 1
+	}
+	
+	function dragMoveListener (event) {
+        console.log('dragMoveListener');
+        var target = event.target
+            // keep the dragged position in the data-x/data-y attributes
+            x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
+            y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+			s = (parseFloat(target.getAttribute('data-s')) || 100);
+			z = (parseFloat(target.getAttribute('data-z')) || 1);
+			if (event.scale) {
+				console.log(event.scale)
+				s = s * (1+(event.ds));
+				z = z * event.scale;
+				z = Math.max(0.66, Math.min(3.0, z));
+				//console.log(s)
+			}
+        // translate the element
+        target.style.webkitTransform =
+            target.style.transform =
+                'translate(' + x + 'px, ' + y + 'px) scale('+z+ ')'; //'+s+')';
+		
+		//target.style.height = s
+
+        // update the position attributes
+        target.setAttribute('data-x', x);
+        target.setAttribute('data-y', y);
+		target.setAttribute('data-s', s);
+		//target.setAttribute('data-z', z);
+		
+		p = Math.round(s)
+		//target.style.width = p+'px';
+		//target.style.height = p+'px';
+    }
+    
+    function reset () {
+		scaleElement.style.webkitTransform =
+			scaleElement.style.transform =
+			'scale(1)'
+
+		angleScale.angle = 0
+		angleScale.scale = 1
+	}
+	
+	// this is used later in the resizing and gesture demos
+	window.dragMoveListener = dragMoveListener
+
+    // target elements with the "draggable" class
+    interact('.x')
+        .draggable({
+            // enable inertial throwing
+            inertia: true,
+            // keep the element within the area of it's parent
+            restrict: {
+                restriction: "parent",
+                endOnly: false,
+                elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
+            },
+            
+            // enable autoScroll
+            autoScroll: true,
+
+            onstart: function (event) {
+                console.log('onstart');
+
+            },
+
+            // call this function on every dragmove event
+            onmove: dragMoveListener,
+            // call this function on every dragend event
+            onend: function (event) {
+                console.log('onend');
+            }
+        })
+	
+	interact('.draggable')
+		.gesturable({
+			onstart: function (event) {
+			  console.log('onstart2');
+			  //angleScale.angle -= event.angle;
+			},
+		
+			onmove: function (event) {
+				console.log('onmove2');
+				// document.body.appendChild(new Text(event.scale))
+				/*var currentAngle = event.angle + angleScale.angle
+				var currentScale = event.scale * angleScale.scale
+				var scaleElement = event.target.parentElement.children[0];
+				console.log(scaleElement)
+				//var target = event.target
+
+				scaleElement.style.webkitTransform =
+				scaleElement.style.transform =
+					'scale(' + currentScale + ')'
+				*/
+				// uses the dragMoveListener from the draggable demo above
+				dragMoveListener(event)
+			},
+			onend: function (event) {
+				console.log('onend2');
+				//var scaleElement = event.target.parentElement.children[0];
+				//angleScale.angle = angleScale.angle + event.angle
+				//angleScale.scale = angleScale.scale * event.scale
+				//angleScale.angle = angleScale.angle + event.angle
+				//angleScale.scale = angleScale.scale * event.scale
+				var target = event.target
+					z = (parseFloat(target.getAttribute('data-z')) || 1);
+					z = z * event.scale
+					z = Math.max(0.66, Math.min(3.0, z));
+					console.log(z)
+					
+					target.setAttribute('data-z', z);
+			}
+		})
+		.draggable({
+            // enable inertial throwing
+            inertia: true,
+            // keep the element within the area of it's parent
+            restrict: {
+                restriction: "parent",
+                endOnly: false,
+                elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
+            },
+            
+            // enable autoScroll
+            autoScroll: true,
+
+            onstart: function (event) {
+                console.log('onstart');
+
+            },
+
+            // call this function on every dragmove event
+            onmove: dragMoveListener,
+            // call this function on every dragend event
+            onend: function (event) {
+                console.log('onend');
+            }
+        })
+		
+	    .on('tap', function (event) {
+			event.currentTarget.classList.toggle('switch-bg');
+			console.log('ontap');
+			event.preventDefault();
+		  })		
+		
+		
+	interact('.house').dropzone({
+	  // only accept elements matching this CSS selector
+	  // Require a 75% element overlap for a drop to be possible
+	  overlap: 0.75,
+
+	  // listen for drop related events:
+
+	  ondropactivate: function (event) {
+		// add active dropzone feedback
+		event.target.classList.add('drop-active')
+	  },
+	  ondragenter: function (event) {
+		var draggableElement = event.relatedTarget
+		var dropzoneElement = event.target
+
+		// feedback the possibility of a drop
+		dropzoneElement.classList.add('drop-target')
+		draggableElement.classList.add('can-drop')
+	  },
+	  ondragleave: function (event) {
+		// remove the drop feedback style
+		event.target.classList.remove('drop-target')
+		event.relatedTarget.classList.remove('can-drop')
+	  },
+	  ondrop: function (event) {
+	  },
+	  ondropdeactivate: function (event) {
+		// remove active dropzone feedback
+		event.target.classList.remove('drop-active')
+		event.target.classList.remove('drop-target')
+	  }
+	})
+	
+	
+    
+
+    </script>
+</body>
+</html>

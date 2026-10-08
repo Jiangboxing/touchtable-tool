@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Drag Drop Demo</title>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script> -->
+	
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	
+	<script src="interact.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="jquery.js"></script>
+	
+   
+</head>
+<body>
+		<div class="images">
+            <img src="images/buffer.png" id="buffer.png">
+            <img src="images/bufferconverter.png" id="bufferconverter.png">
+            <img src="images/car.png" id="car.png">
+            <img src="images/bolt.png" id="bolt.png">
+            <img src="images/dishwasher.png" id="dishwasher.png">
+            <img src="images/solarpanel.png" id="solarpanel.png">
+            <img src="images/washingmachine.png" id="washingmachine.png">
+            <img src="images/background-summer.png" id="background-summer.png">
+            <img src="images/background-fall.png" id="background-fall.png">
+            <img src="images/background-winter.png" id="background-winter.png">
+            <img src="images/background-spring.png" id="background-spring.png">
+            <img src="images/background-summer-night.png" id="background-summer-night.png">
+            <img src="images/background-fall-night.png" id="background-fall-night.png">
+            <img src="images/background-winter-night.png" id="background-winter-night.png">
+            <img src="images/background-spring-night.png" id="background-spring-night.png">
+            <img src="images/background-summer-gray.png" id="background-summer-gray.png">
+            <img src="images/background-fall-gray.png" id="background-fall-gray.png">
+            <img src="images/background-winter-gray.png" id="background-winter-gray.png">
+            <img src="images/background-spring-gray.png" id="background-spring-gray.png">
+            <img src="images/background-summer-night-gray.png" id="background-summer-night-gray.png">
+            <img src="images/background-fall-night-gray.png" id="background-fall-night-gray.png">
+            <img src="images/background-winter-night-gray.png" id="background-winter-night-gray.png">
+            <img src="images/background-spring-night-gray.png" id="background-spring-night-gray.png">
+            <img src="images/trash.png" id="trash.png">
+        </div>
+
+	<div class="bg" id="bg"></div>
+	<canvas id="canvas">Your browser doesn't support canvas</canvas>
+	<div class="board" id="board">
+		<button type="button" id='playButton' class="uibutton noselect" onclick="return toggleSim(event)">&#9658;</button>
+		<button type="button" id='smartButton' class="uibutton noselect" onclick="return toggleControl(event)">&#9673;</button>
+	
+		<div id="house0" class="house" style="left:0px; top: 0px;"></div>
+		<div id="house1" class="house" style="left:675px; top: 0px;"></div>
+		<div id="house2" class="house" style="left:1350px; top: 0px;"></div>
+		<div id="house5" class="house" style="left:0px; top: 830px;"></div>
+		<div id="house4" class="house" style="left:675px; top: 830px;"></div>
+		<div id="house3" class="house" style="left:1350px; top: 830px;"></div>
+	
+
+		<div id="ev1" class="draggable ev scalable" data-s=60 >
+			<div class="power"></div><div class="socback"></div><div class="soc"></div><img src="images/car.png" class="devicon" />
+		</div>
+		<div id="bat1" class="draggable bat scalable" data-s=60 >
+			<div class="power"></div><div class="socback"></div><div class="soc"></div><img src="images/buffer.png" class="devicon" />
+		</div>
+		
+		<div id="pv1" class="draggable pv scalable" data-s=60 >
+			<div class="power"></div><img src="images/solarpanel.png" class="devicon" />
+		</div>
+		
+		<div id="hp1" class="draggable hp scalable" data-s=60 >
+			<div class="power"></div><div class="socback"></div><div class="soc"></div><img src="images/bufferconverter.png" class="devicon" />
+		</div>
+		
+		<div id="wm1" class="draggable wm" data-s=60 >
+			<div class="power"></div><img src="images/washingmachine.png" class="devicon" />
+		</div>
+		
+		<div id="dw1" class="draggable dw" data-s=60 >
+			<div class="power"></div><img src="images/dishwasher.png" class="devicon" />
+		</div>
+		
+
+		
+      
+
+	</div>
+	
+    
+	<script src="js/const.js"></script>
+	<script src="js/util.js"></script>
+	
+	<script src="js/background.js"></script>
+	
+	<script src="js/sockets.js"></script>
+	
+	<script src="js/sim.js"></script>
+	
+	<script src="js/network.js"></script>
+	<script src="js/overloadWarnings.js"></script>
+	<script src="js/gamefication.js"></script>
+	<script src="js/devices.js"></script>
+	
+	<script src="js/main.js"></script>
+	
+</body>
+</html>

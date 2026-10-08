@@ -1,0 +1,301 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+#tick-form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
+#tick-form button { width: 90%; background: rgb(130, 224, 255); position: center; border: none; padding: 10px; }
+
+canvas { 
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 1920px;
+	height: 1080px;
+	margin: 0px;
+	padding: 0px;
+}
+
+body {
+	background-image: url("../images/background-spring.png");
+	background-repeat: no-repeat;
+	width: 1920px;
+	height: 1080px;
+	margin: 0px;
+	padding: 0px;
+	color: #fff;
+	
+	overflow: hidden;
+	overscroll-behavior-x: none;
+	touch-action: none;
+}
+
+.bg{
+	background-image: url("../images/background-winter.png");
+	width: 1920px;
+	height: 1080px;
+	margin: 0px;
+	padding: 0px;
+	display: block;
+}	
+
+.board{
+	background-color: rgba(0,0,0,0);
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 1920px;
+	height: 1080px;
+	margin: 0px;
+	padding: 0px;
+}		
+
+.house {
+	display: flex;
+	opacity: 0; 
+	width: 570px;
+	height: 250px;
+	padding: 0px;
+	margin: 0px;
+	position: absolute;
+	color: #fff;
+}
+
+.overload-warning {
+	display: none;
+	position: absolute;
+	z-index: 1200;
+	width: 360px;
+	padding: 8px 12px;
+	border: 2px solid #7a1800;
+	border-radius: 4px;
+	background-color: rgba(255, 225, 92, 0.96);
+	box-shadow: 0 3px 8px rgba(0, 0, 0, 0.42);
+	color: #2d1000;
+	font-family: Arial, sans-serif;
+	font-size: 17px;
+	font-weight: 700;
+	line-height: 1.25;
+	text-align: center;
+}
+
+.overload-warning.visible {
+	display: block;
+	animation: overload-warning-pulse 1s ease-in-out infinite alternate;
+}
+
+.overload-warning-load {
+	color: #a32000;
+}
+
+@keyframes overload-warning-pulse {
+	from {
+		background-color: rgba(255, 225, 92, 0.96);
+	}
+	to {
+		background-color: rgba(255, 151, 76, 0.98);
+	}
+}
+
+.soc {
+	display: block;
+	width: 96%;
+    height: 8px;
+    padding: 0px;
+    margin: 2%;
+	color: #fff;
+	border: 1px solid #000;
+	border-radius: 2px;
+	background-color: #4f4;
+	position: absolute;
+	bottom: 0;
+	visibility: hidden;
+}
+
+.socback {
+	display: block;
+	width: 96%;
+    height: 8px;
+    padding: 0px;
+    margin: 2%;
+	color: #fff;
+	border: 1px solid #000;
+	border-radius: 2px;
+	background-color: #888;
+	position: absolute;
+	bottom: 0;
+	visibility: hidden;
+}
+
+.power {
+	display: block;
+	width: 0%;
+    height: 96%;
+    padding: 0px;
+    margin: 2%;
+	background-color: rgba(255,68,68,0.5);
+	border-radius: 2px;
+	visibility: hidden;
+}
+
+.devicon {
+	width: 100%;
+    height: 100%;
+	padding: 5% 10% 15% 10%;
+    margin: 0px;
+	display: block;
+	max-width: 100%;
+    max-height: 100%;
+	position: absolute;
+	top: 0px;
+}
+
+.draggable {
+  display: block;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  transform: rotate(90deg);
+  
+  width: 60px;
+  height: 60px;
+  padding: 0px;
+  margin: 0px;
+  
+  
+  max-width: 200px;
+  max-height: 200px;
+  min-width: 50px;
+  min-height: 50px;
+  
+  position: absolute;
+  top: 510px;
+
+  border-radius: 4px;
+
+  text-align: center;
+  color: #aaa;
+  background-color: #666;
+  border: 1px solid #000;
+
+  touch-action: none;
+  user-select: none;
+}
+
+
+.ev {
+  width: 60px;
+  height: 60px;
+  left: 520px;
+}
+
+.bat {
+  width: 60px;
+  height: 60px;
+  left: 680px;
+}
+.pv {
+  width: 60px;
+  height: 60px;
+  left: 840px;
+}
+.hp {
+  width: 60px;
+  height: 60px;
+  left: 1000px;
+}
+.wm {
+  width: 60px;
+  height: 60px;
+  left: 1160px;
+}
+.dw {
+  width: 60px;
+  height: 60px;
+  left: 1320px;
+}
+.can-drop {
+  color: #ccc;
+  border-color: #000;
+  background-color: #ccc;
+}
+
+
+#scale-element.reset {
+	transition: -webkit-transform 0.3s ease-in-out;
+	transition: transform 0.3s ease-in-out;
+}
+		
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.images {
+    display: none;
+}
+
+.uibutton {
+    background-color: #cccccc;
+	padding: 10px;
+	border: 1px solid black;
+	font-size: 30px;
+	transform: rotate(90deg);
+}
+
+.settings {
+	position:absolute;
+	background-color: #cccccc;
+    border: 1px solid black;
+	width: 200px;
+	padding: 5px;
+
+	display: flex;
+	flex-direction: column;
+}
+
+.settings button {
+	border-radius: 2px;
+}
+
+
+#playButton {
+	position: absolute;
+	top: 510px;
+	left: 50px;
+	width: 60px;
+	height: 60px;
+	text-align: center;
+}
+
+#smartButton {
+	position: absolute;
+	top: 510px;
+	left: 210px;
+	width: 60px;
+	height: 60px;
+	text-align: center;
+}
+
+#ffButton {
+	position: absolute;
+	top: 60%;
+	left: 3%;
+	width: 100px;
+}

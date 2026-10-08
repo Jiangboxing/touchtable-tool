@@ -1,0 +1,70 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=1920, height=1080, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <title>Smart Grid Demonstrator</title>
+
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+
+        <style>
+            body {margin:0px}
+            canvas {width:100%; height:100%}
+        </style>
+
+        <script src="/socket.io/socket.io.js"></script>
+        <!-- <script src="https://code.jquery.com/jquery-1.11.1.js"></script> -->
+		<script src="jquery.js"></script>
+
+    </head>
+
+    <body id="body">
+        <canvas id="canvas">Your browser doesn't support canvas</canvas>
+
+		<div class="images">
+            <img src="images/buffer.png" id="buffer.png">
+            <img src="images/bufferconverter.png" id="bufferconverter.png">
+            <img src="images/car.png" id="car.png">
+            <img src="images/bolt.png" id="bolt.png">
+            <img src="images/dishwasher.png" id="dishwasher.png">
+            <img src="images/solarpanel.png" id="solarpanel.png">
+            <img src="images/washingmachine.png" id="washingmachine.png">
+            <img src="images/background-summer.png" id="background-summer.png">
+            <img src="images/background-fall.png" id="background-fall.png">
+            <img src="images/background-winter.png" id="background-winter.png">
+            <img src="images/background-spring.png" id="background-spring.png">
+            <img src="images/background-summer-night.png" id="background-summer-night.png">
+            <img src="images/background-fall-night.png" id="background-fall-night.png">
+            <img src="images/background-winter-night.png" id="background-winter-night.png">
+            <img src="images/background-spring-night.png" id="background-spring-night.png">
+            <img src="images/background-summer-gray.png" id="background-summer-gray.png">
+            <img src="images/background-fall-gray.png" id="background-fall-gray.png">
+            <img src="images/background-winter-gray.png" id="background-winter-gray.png">
+            <img src="images/background-spring-gray.png" id="background-spring-gray.png">
+            <img src="images/background-summer-night-gray.png" id="background-summer-night-gray.png">
+            <img src="images/background-fall-night-gray.png" id="background-fall-night-gray.png">
+            <img src="images/background-winter-night-gray.png" id="background-winter-night-gray.png">
+            <img src="images/background-spring-night-gray.png" id="background-spring-night-gray.png">
+            <img src="images/trash.png" id="trash.png">
+        </div>
+
+        <div class="noselect" id="settings"></div>
+
+	    <button type="button" id='playButton' class="uibutton noselect" onclick="return toggleSim(event)">&#9658;</button>
+		<button type="button" id='smartButton' class="uibutton noselect" onclick="return toggleControl(event)">&#9673;</button>
+		
+        <script src="js/handlers/sockets.js"></script>
+        <script src="js/handlers/sim.js"></script>
+        <script src="js/const.js"></script>
+        <script src="js/util.js"></script>
+        <script src="js/draw/network.js"></script>
+        <script src="js/draw/device.js"></script>
+        <script src="js/draw/background.js"></script>
+        <script src="js/draw/house.js"></script>
+        <script src="js/draw/trash.js"></script>
+        <script src="js/main.js"></script>
+
+        <p id='clock' style='position: absolute; top: 10px; visibility: hidden;' class="noselect"></p>
+
+    </body>
+</html>

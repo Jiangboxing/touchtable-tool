@@ -1,0 +1,115 @@
+
+const socket = io();
+
+const NUMBER_OF_HOUSES = 6
+
+const SCREEN_WIDTH = 1920;
+const SCREEN_HEIGHT = 1080;
+
+const INTERVAL_RUN_FAST = 100;
+const INTERVAL_RUN = 500;
+
+const CONSUMPTION_VISUALISATION_ROOF = 2500;
+
+const GARBAGE_CAN_POS = { x: 1320, y: 502 };
+
+const SETTINGS_OFFSET_Y = -10;
+const SETTINGS_OFFSET_X = -10;
+
+const MAX_VOLTAGE_DIFF = 23;
+
+const MOCK_NETWORK = {
+	'edges': [{'ampacity': 1065,
+            'current': 1.3142860925260916,
+            'name': 'LVCable-0',
+            'nodes': ['transformer', 'feeder-0']},
+           {'ampacity': 65,
+            'current': 1.3142860925260916,
+            'name': 'LVCable-1',
+            'nodes': ['feeder-0', 'feeder-0-house-0']},
+           {'ampacity': 25,
+            'current': 0.14390765622747865,
+            'name': 'LVCable-2',
+            'nodes': ['feeder-0-house-0', 'houseconnection-0']},
+           {'ampacity': 65,
+            'current': 1.1722160414841636,
+            'name': 'LVCable-3',
+            'nodes': ['feeder-0-house-0', 'feeder-0-house-1']},
+           {'ampacity': 25,
+            'current': 0.3535437625958453,
+            'name': 'LVCable-4',
+            'nodes': ['feeder-0-house-1', 'houseconnection-1']},
+           {'ampacity': 65,
+            'current': 0.8290486562235594,
+            'name': 'LVCable-5',
+            'nodes': ['feeder-0-house-1', 'feeder-0-house-2']},
+           {'ampacity': 25,
+            'current': 0.22258659016463876,
+            'name': 'LVCable-6',
+            'nodes': ['feeder-0-house-2', 'houseconnection-2']},
+           {'ampacity': 65,
+            'current': 0.6091946899614465,
+            'name': 'LVCable-7',
+            'nodes': ['feeder-0-house-2', 'feeder-0-house-3']},
+           {'ampacity': 25,
+            'current': 0.20394462565395634,
+            'name': 'LVCable-8',
+            'nodes': ['feeder-0-house-3', 'houseconnection-3']},
+           {'ampacity': 65,
+            'current': 0.43186274337810987,
+            'name': 'LVCable-9',
+            'nodes': ['feeder-0-house-3', 'feeder-0-house-4']},
+           {'ampacity': 25,
+            'current': 0.21654892216595437,
+            'name': 'LVCable-10',
+            'nodes': ['feeder-0-house-4', 'houseconnection-4']},
+           {'ampacity': 65,
+            'current': 0.21431386488979323,
+            'name': 'LVCable-11',
+            'nodes': ['feeder-0-house-4', 'feeder-0-house-5']},
+           {'ampacity': 25,
+            'current': 0.21431386488979323,
+            'name': 'LVCable-12',
+            'nodes': ['feeder-0-house-5', 'houseconnection-5']}],
+ 'nodes': [{'edges': ['LVCable-0'],
+            'name': 'transformer',
+            'voltage': 225.00000000000003},
+           {'edges': ['LVCable-0', 'LVCable-1'],
+            'name': 'feeder-0',
+            'voltage': 229.97471867912478},
+           {'edges': ['LVCable-1', 'LVCable-2', 'LVCable-3'],
+            'name': 'feeder-0-house-0',
+            'voltage': 229.97219063259057},
+           {'edges': ['LVCable-2'],
+            'name': 'houseconnection-0',
+            'voltage': 229.97074465518957},
+           {'edges': ['LVCable-3', 'LVCable-4', 'LVCable-5'],
+            'name': 'feeder-0-house-1',
+            'voltage': 229.96990483200443},
+           {'edges': ['LVCable-4'],
+            'name': 'houseconnection-1',
+            'voltage': 229.96587106142346},
+           {'edges': ['LVCable-5', 'LVCable-6', 'LVCable-7'],
+            'name': 'feeder-0-house-2',
+            'voltage': 229.96839537655582},
+           {'edges': ['LVCable-6'],
+            'name': 'houseconnection-2',
+            'voltage': 229.9662261516966},
+           {'edges': ['LVCable-7', 'LVCable-8', 'LVCable-9'],
+            'name': 'feeder-0-house-3',
+            'voltage': 229.96722549166563},
+           {'edges': ['LVCable-8'],
+            'name': 'houseconnection-3',
+            'voltage': 229.9648937968863},
+           {'edges': ['LVCable-9', 'LVCable-10', 'LVCable-11'],
+            'name': 'feeder-0-house-4',
+            'voltage': 229.9665631481841},
+           {'edges': ['LVCable-10'],
+            'name': 'houseconnection-4',
+            'voltage': 229.96446060462965},
+           {'edges': ['LVCable-11', 'LVCable-12'],
+            'name': 'feeder-0-house-5',
+            'voltage': 229.96622719213397},
+           {'edges': ['LVCable-12'],
+            'name': 'houseconnection-5',
+            'voltage': 229.9641571261591}]};

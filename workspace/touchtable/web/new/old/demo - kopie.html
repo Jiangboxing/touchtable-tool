@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Drag Drop Demo</title>
+    
+    <style>
+.pinchzoomarea {
+
+    display: flex;
+    width: 300px;
+    height: 300px;
+    margin-bottom: 9px;
+    justify-content: center;
+    align-items: center;
+    background-color: #a80000;
+    }
+    
+    .gesture-area {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100px;
+    height: 100px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.scale-element {
+    display: block;
+    max-width: 100%;
+    margin: auto;
+    touch-action: none;
+    width: 100%;
+    height: 100%;
+    background-color: #888;
+    background-position: 0px 0px;
+    background-size: cover;
+    cursor: move;
+}
+	  </style>
+   
+</head>
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+
+<div class="pinchzoomarea">
+  <div id="gesture-area" class="gesture-area">
+    <div id="scale-element" class="scale-element"></div>
+  </div>
+</div>
+<div class="pinchzoomarea">
+  <div class="gesture-area">
+    <div class="scale-element"></div>
+  </div>
+</div>
+
+
+    <script>
+function dragMoveListener (event) {
+  var target = event.target
+
+  // keep the dragged position in the data-x/data-y attributes
+  var x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx
+  var y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy
+
+  // translate the element
+  target.style.webkitTransform =
+    target.style.transform =
+      'translate(' + x + 'px, ' + y + 'px)'
+
+  // update the posiion attributes
+  target.setAttribute('data-x', x)
+  target.setAttribute('data-y', y)
+}
+
+// this is used later in the resizing and gesture demos
+window.dragMoveListener = dragMoveListener
+
+
+
+var angleScale = {
+  angle: 0,
+  scale: 1
+}
+
+
+interact('.gesture-area')
+  .gesturable({
+    onstart: function (event) {
+      angleScale.angle -= event.angle
+
+      ///clearTimeout(resetTimeout)
+      //scaleElement.classList.remove('reset')
+    },
+    onmove: function (event) {
+      var currentAngle = event.angle + angleScale.angle
+      var currentScale = event.scale * angleScale.scale
+      var scaleElement = event.target;
+	  console.log(event)
+      console.log(scaleElement)
+	  console.log(currentScale)
+
+      scaleElement.style.webkitTransform =
+      scaleElement.style.transform =
+        'rotate(' + currentAngle + 'deg)' + 'scale(' + currentScale + ')'
+
+      dragMoveListener(event)
+    },
+    onend: function (event) {
+      var target = event.target;
+      angleScale.angle = angleScale.angle + event.angle
+      angleScale.scale = angleScale.scale * event.scale
+
+      target.style.webkitTransform =
+            target.style.transform =
+                'translate(' + event.scale + 'px, ' + event.scale + 'px)';
+
+
+    }
+
+
+  })
+  .draggable({ onmove: dragMoveListener })
+
+  function reset () {
+      scaleElement.style.webkitTransform =
+        scaleElement.style.transform =
+        'scale(1)'
+
+      angleScale.angle = 0
+      angleScale.scale = 1
+      }
+
+    </script>
+</body>
+</html>

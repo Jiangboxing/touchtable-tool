@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=1920, height=1080, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <title>Smart Grid Demonstrator | graphs </title>
+
+        <link rel="stylesheet" type="text/css" href="css/graphs.css">
+
+        <style>
+            body {margin:0px}
+            canvas {width:100%; height:100%}
+        </style>
+
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    </head>
+
+    <body>
+        <canvas id="chart-network" width="400" height="400"></canvas>
+        
+        <script src="js/graphs/draw/network.js"></script>
+        <script src="js/graphs/main.js"></script>
+    </body>
+</html>

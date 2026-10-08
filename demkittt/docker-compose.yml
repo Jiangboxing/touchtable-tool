@@ -1,0 +1,45 @@
+version: '3'
+
+networks:
+  proxy:
+  
+services:
+  influxdb:
+    container_name: influxdb
+    image: influxdb
+    restart: always
+    ports:
+      - "8086:8086"
+    #volumes:
+      #- "/home/<username>/docker/influxdb:/var/lib/influxdb"
+      #- "/home/<username>/docker/influxdb/conf/influxdb.conf:/etc/influxdb/influxdb.conf:ro"
+
+  grafana:
+    container_name: grafana
+    image: grafana/grafana
+    restart: always
+    ports:
+      - "3000:3000"
+    #volumes:
+      #- "/home/<username>/docker/grafana/lib:/var/lib/grafana"
+      #- "/home/<username>/docker/grafana/log:/var/log/grafana"
+    depends_on:
+      - influxdb
+
+  demkit:
+    container_name: demkit
+    image: demkit:latest
+    #restart: always
+    volumes:
+      - "/home/<username>/demkitsim/workspace:/app/workspace"
+      #- "/home/<username>/demkitsim/workspace:/root/.ssh"
+    environment:
+      - ENV DEMKIT_FOLDER=example
+      - ENV DEMKIT_MODEL=demohouse
+      - ENV DEMKIT_COMPONENTS=/app/demkit/components/
+      - ENV DEMKIT_INFLUXURL=http//influx
+      - ENV DEMKIT_INFLUXPORT=8068
+      - ENV DEMKIT_INFLUXDB=dem
+    depends_on:
+      - influxdb
+      - grafana

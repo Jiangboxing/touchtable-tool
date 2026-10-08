@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Configuration panel</title>
+    <link rel="stylesheet" href='css/configuration_panel.css'/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+
+<div class="configuration">
+
+    <h2 class="configuration-header">Web based visualizer</h2>
+
+    <form action="index_canvas.html" onclick="return validateIP( document.getElementById("ipaddress").value)" class="configuration-container">
+        <label id="ipadress">IP address:</label>
+        <label type="text" id="ip_address"/>
+        <input type="text" id="ipaddress">
+        <button onclick="checkIP();">Start simulation</button>
+    </form>
+
+</div>
+
+<script text="javascript.js">
+
+    function validateIP(ipaddress) {
+        var regex = /\b(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b/gi;
+        if( regex.test(ipaddress) ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function checkIP() {
+        var ipaddress = document.getElementById("ipaddress").value;
+        if (validateIP(ipaddress) === true) {
+            window.open = "index_canvas.html";
+        }
+        else
+            {
+                alert("Wrong IP address");
+            }
+    }
+</script>
+</body>
+</html>

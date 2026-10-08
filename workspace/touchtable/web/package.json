@@ -1,0 +1,25 @@
+{
+  "name": "webbased-visualizer",
+  "version": "0.0.1",
+  "description": "Webbased visualizer for DEMKit",
+  "main": "index.js",
+  "engines": {
+    "node": "11.15.0",
+    "npm": "6.7.0"
+  },
+  "scripts": {
+    "test": "node testClient.js",
+    "build": "docker build -t webbased-visualizer .",
+    "start": "npm run build && docker run --env-file=.env -p 3002:3002 -t -i --init webbased-visualizer",
+    "start:deamon": "npm run build && docker run --env-file=.env -p 3002:3002 -d -t webbased-visualizer"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "request": "^2.88.0",
+    "socket.io": "^2.2.0"
+  }
+}
